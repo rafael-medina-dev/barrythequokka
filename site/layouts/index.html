@@ -1,18 +1,97 @@
 <!doctype html>
 <html lang="{{ .Site.Language.Lang }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ .Site.Title }}</title>
-  </head>
-  <body style="margin: 0;">
-    {{ $image := resources.Get "img/latest.webp" }}
-    {{ if $image }}
-      <img
-        src="{{ $image.RelPermalink }}"
-        alt=""
-        style="display: block; width: 100%; height: auto;"
-      >
-    {{ end }}
+  {{ partial "head" . }}
+  <body class="fansite"
+    {{ $trashcan := resources.Get "img/trashcan.png" }}
+    {{ if $trashcan }}style="--trashcan-url: url('{{ $trashcan.RelPermalink }}');"{{ end }}
+  >
+    <div class="page">
+      <header class="hero">
+        <div class="hero-top">
+          <span class="badge">Official Unofficial Fanpage</span>
+          <span class="badge badge-alt">Est. 2023 (in our hearts)</span>
+        </div>
+        <div class="hero-main">
+          <div class="hero-text">
+            <h1>Barry the Quokka Shrine</h1>
+            <p class="subtitle">I mean just look at him</p>
+            <div class="hero-actions">
+              <a class="btn-2000" href="#gallery">Enter the Gallery</a>
+              <a class="btn-2000 btn-ghost" href="#secrets">Always check the trash can</a>
+            </div>
+          </div>
+          <div class="hero-splash">
+            {{ $image := resources.Get "img/latest.webp" }}
+            {{ if $image }}
+              <img src="{{ $image.RelPermalink }}" alt="Barry the Quokka artwork">
+            {{ end }}
+          </div>
+        </div>
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker-track">WELCOME TO BARRY'S DREAMGEAR • BERRY-SWEET VIBES • RINGS: 2/23 • KEEP SMILING OR ELSE •</div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="panel" id="gallery">
+          <div class="panel-header">
+            <h2>Barry Gallery</h2>
+            <p>Gaze upon his glory</p>
+          </div>
+          <div class="gallery-grid">
+            {{ $galleryImage := resources.Get "img/latest.webp" }}
+            {{ if $galleryImage }}
+              {{ range seq 1 6 }}
+                <figure class="gallery-card">
+                  <img src="{{ $galleryImage.RelPermalink }}" alt="Barry artwork {{ . }}">
+                  <figcaption>Official Art #{{ . }}</figcaption>
+                </figure>
+              {{ end }}
+            {{ else }}
+              <p>your broke it</p>
+            {{ end }}
+          </div>
+        </section>
+
+        <section class="panel panel-alt" id="secrets">
+          <div class="panel-header">
+            <h2>Trash Can Secrets</h2>
+            <p>There are trash cans hidden all over the page.</p>
+          </div>
+          <div class="secret-grid">
+            <details class="trash-can">
+              <summary><span class="sr-only">Trash Can #1</span></summary>
+              <p>Barry says: “You found my snack stash. Please return three apples.”</p>
+            </details>
+            <details class="trash-can">
+              <summary><span class="sr-only">Trash Can #2</span></summary>
+              <p>Secret cheat code: UP, UP, DOWN, DOWN, NAP, NAP.</p>
+            </details>
+            <details class="trash-can">
+              <summary><span class="sr-only">Trash Can #3</span></summary>
+              <p>Gag reel: Barry once tried to juggle acorns. Once.</p>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>I dont know what to put here</p>
+        <p class="blink">Under Construction Forever</p>
+      </footer>
+
+      <details class="trash-can trash-can-hidden trash-can-nw">
+        <summary><span class="sr-only">Trash Can</span></summary>
+        <p>I wish i was funny</p>
+      </details>
+      <details class="trash-can trash-can-hidden trash-can-ne">
+        <summary><span class="sr-only">Trash Can</span></summary>
+        <p>You found one of Barry's gloves. Please give it back</p>
+      </details>
+      <details class="trash-can trash-can-hidden trash-can-se">
+        <summary><span class="sr-only">Trash Can</span></summary>
+        <p>This can only holds dreams and fruit snacks.</p>
+      </details>
+    </div>
   </body>
 </html>
