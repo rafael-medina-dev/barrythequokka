@@ -4,7 +4,7 @@ subtitle: A lot of trash cans
 image: /img/home-jumbotron.jpg
 blurb:
   heading: Why Barry?
-  text: "Who Barry, Yes Barry
+  text: "Who Barry? Yes, Barry."
 intro:
   heading: "What youâ€™ll find"
   text: "Official artwork, playful secrets, and fan-made goodies. Explore, click around, and donâ€™t forget to check the trash cans."
