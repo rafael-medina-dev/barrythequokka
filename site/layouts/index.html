@@ -1,13 +1,18 @@
-{{ define "main" }}
-
-{{ partial "jumbotron" (dict "imageUrl" .Params.image "title" .Title "subtitle" .Params.subtitle) }}
-
-{{ partial "short-text" .Params.blurb}}
-
-{{ partial "2-up" .Params }}
-
-{{ partial "text-and-image" (dict "heading" .Params.values.heading "text" .Params.values.text "buttonText" "Read more" "buttonLink" "/values") }}
-
-{{ partial "blog" . }}
-
-{{ end }}
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .Site.Title }}</title>
+  </head>
+  <body style="margin: 0;">
+    {{ $image := resources.Get "img/latest.webp" }}
+    {{ if $image }}
+      <img
+        src="{{ $image.RelPermalink }}"
+        alt=""
+        style="display: block; width: 100%; height: auto;"
+      >
+    {{ end }}
+  </body>
+</html>
